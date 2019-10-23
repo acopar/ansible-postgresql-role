@@ -1,6 +1,6 @@
 galaxy_info:
   role_name: postgresql
-  author: Tadej Janež
+  author: Genialis
   description: Role to install and configure PostgreSQL database on RHEL/CentOS
 
   license: GPLv3

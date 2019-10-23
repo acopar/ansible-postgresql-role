@@ -160,7 +160,7 @@ Example Playbook
     - hosts: all
 
       roles:
-        - tjanez.postgresql
+        - genialis.postgresql
 
 
 License
@@ -175,12 +175,3 @@ Author Information
 Tadej Janež
 
 
-Acknowledgement
----------------
-
-This Ansible role was originally developed for `Genialis`_. With approval from
-Genialis, the code was generalised and published as Open Source, for which the
-author would like to express his gratitude.
-
-.. _Genialis:
-  https://www.genialis.com/
