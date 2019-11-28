@@ -13,7 +13,7 @@
     # NOTE: Output of 'yum repolist' may start with '*' if the repository has
     # metalink data and the latest metadata is not local or with '!' if the
     # repository has metadata that is expired.
-    when: not postgresql_repos_res.stdout | search('\n(\*|!)?' + postgresql_rhel_rhscl_repo)
+    when: not postgresql_repos_res.stdout is search('\n(\*|!)?' + postgresql_rhel_rhscl_repo)
 
   when: ansible_distribution == "RedHat"
 
