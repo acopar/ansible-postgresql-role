@@ -80,13 +80,12 @@
     # time.
     - name: Remove the previous syspaths packages
       package:
-        name: "{{ postgresql_upgrade_old_scl_name }}-{{ item }}"
+        name:
+          - "{{ postgresql_upgrade_old_scl_name }}-syspaths"
+          - "{{ postgresql_upgrade_old_scl_name }}-postgresql-syspaths"
+          - "{{ postgresql_upgrade_old_scl_name }}-postgresql-server-syspaths"
+          - "{{ postgresql_upgrade_old_scl_name }}-postgresql-contrib-syspaths"
         state: absent
-      with_items:
-        - syspaths
-        - postgresql-syspaths
-        - postgresql-server-syspaths
-        - postgresql-contrib-syspaths
       when: postgresql_install_syspaths
 
   when: postgresql_upgrade_installed_versions | length == 1
