@@ -11,3 +11,15 @@ postgresql_conf_hba_custom: []
 postgresql_install_syspaths: true
 
 postgresql_rhel_rhscl_repo: rhel-server-rhscl-7-rpms
+
+postgresql_monitoring_enable: true
+
+monitoring_user: monitoring
+monitoring_group: monitoring
+monitoring_user_home: /home/monitoring
+
+monitoring_postgresql_host: "localhost"
+monitoring_postgresql_port: "5432"
+monitoring_postgresql_db_name: "genialis_base"
+monitoring_postgresql_user: "{{ monitoring_user }}"
+monitoring_postgresql_password: "{{ vaulted_monitoring_postgresql_password }}"

@@ -26,3 +26,8 @@
     name: "{{ postgresql_unit_name }}"
     state: started
     enabled: yes
+
+- import_tasks: monitoring.yml
+  when: postgresql_monitoring_enable
+  tags:
+    - monitoring
