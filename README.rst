@@ -42,6 +42,9 @@ Variables in ``defaults/main.yml``:
 +-----------------------------------------+----------+--------------------------------------------+
 |                Name                     |   Type   |                Description                 |
 +=========================================+==========+============================================+
+| ``postgresql_local_enabled``            | boolean  | Indicates whether the postgres role will   |
+|                                         |          | be installed locally.                      |
++-----------------------------------------+----------+--------------------------------------------+
 | ``postgresql_conf_listen_addresses``    | string   | Comma-separeted list of IP addresses to    |
 |                                         |          | listen on.                                 |
 |                                         |          |                                            |

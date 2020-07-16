@@ -1,4 +1,6 @@
 ---
+postgresql_local_enabled: true
+
 postgresql_conf_listen_addresses: "*"
 postgresql_conf_password_encryption: scram-sha-256
 
