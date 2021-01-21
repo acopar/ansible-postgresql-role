@@ -8,6 +8,7 @@ postgresql_conf_hba_local:
   ipv6: ident
 postgresql_conf_hba_custom: []
 
+postgresql_local_enabled: true
 postgresql_install_syspaths: true
 
 postgresql_rhel_rhscl_repo: rhel-server-rhscl-7-rpms

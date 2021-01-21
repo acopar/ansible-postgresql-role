@@ -101,6 +101,9 @@ Variables in ``defaults/main.yml``:
 |                                         |          | configuration parameter, read the          |
 |                                         |          | `documentation on pg_hba.conf file`_.      |
 +-----------------------------------------+----------+--------------------------------------------+
+| ``postgresql_local_enabled``            | boolean  | Specifies whether to install PostgreSQL    |
+|                                         |          | server packages and configuration.         |
++-----------------------------------------+----------+--------------------------------------------+
 | ``postgresql_install_syspaths``         | boolean  | Specifies whether to install PostgreSQL    |
 |                                         |          | Software Collection as the                 |
 |                                         |          | system-installed PostgreSQL using the      |
