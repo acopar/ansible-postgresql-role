@@ -39,79 +39,79 @@ Role Variables
 Variables in ``defaults/main.yml``:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-+-----------------------------------------+----------+--------------------------------------------+
-|                Name                     |   Type   |                Description                 |
-+=========================================+==========+============================================+
-| ``postgresql_conf_listen_addresses``    | string   | Comma-separeted list of IP addresses to    |
-|                                         |          | listen on.                                 |
-|                                         |          |                                            |
-|                                         |          | *NOTE*: Use ``"*"`` to specify to listen   |
-|                                         |          | on all addresses.                          |
-+-----------------------------------------+----------+--------------------------------------------+
-| ``postgresql_conf_password_encryption`` | string   | Algorithm to use when encrypting           |
-|                                         |          | passwords.                                 |
-|                                         |          |                                            |
-|                                         |          | Available options are:                     |
-|                                         |          |                                            |
-|                                         |          | - ``scram-sha-256``                        |
-|                                         |          | - ``md5``                                  |
-+-----------------------------------------+----------+--------------------------------------------+
-| ``postgresql_conf_hba_local``           | dict     | Dictionary specifying authentication       |
-|                                         |          | methods for local connections in           |
-|                                         |          | ``pg_hba.conf`` file.                      |
-|                                         |          |                                            |
-|                                         |          | It must contain three keys controlling     |
-|                                         |          | different types of local connections:      |
-|                                         |          |                                            |
-|                                         |          | - ``unix_socket``: local Unix socket       |
-|                                         |          |   connections                              |
-|                                         |          | - ``ipv4``: local IPv4 connections         |
-|                                         |          | - ``ipv6``: local IPv6 connections         |
-|                                         |          |                                            |
-|                                         |          | Each key's value must specify a valid      |
-|                                         |          | authentication method for its connection   |
-|                                         |          | type.                                      |
-|                                         |          |                                            |
-|                                         |          | For a list of possible authentication      |
-|                                         |          | methods, read the `documentation on        |
-|                                         |          | pg_hba.conf file`_.                        |
-+-----------------------------------------+----------+--------------------------------------------+
-| ``postgresql_conf_hba_custom``          | list     | List specifying custom records in the      |
-|                                         |          | ``pg_hba.conf`` file.                      |
-|                                         |          |                                            |
-|                                         |          | Each entry is a dictionary of the form:    |
-|                                         |          |                                            |
-|                                         |          | .. code-block:: yaml                       |
-|                                         |          |                                            |
-|                                         |          |     description: string                    |
-|                                         |          |     conn_type: string                      |
-|                                         |          |     database: string                       |
-|                                         |          |     user: string                           |
-|                                         |          |     address: string                        |
-|                                         |          |     method: string                         |
-|                                         |          |                                            |
-|                                         |          | where ``description`` represents record's  |
-|                                         |          | description, ``conn_type``, ``database``,  |
-|                                         |          | ``user``, ``address`` and ``method``       |
-|                                         |          | represent ``pg_hba.conf``'s connection     |
-|                                         |          | type, database, user, address and          |
-|                                         |          | authentication method parameters.          |
-|                                         |          |                                            |
-|                                         |          | For a detailed description of each         |
-|                                         |          | configuration parameter, read the          |
-|                                         |          | `documentation on pg_hba.conf file`_.      |
-+-----------------------------------------+----------+--------------------------------------------+
-| ``postgresql_local_enabled``            | boolean  | Specifies whether to install PostgreSQL    |
-|                                         |          | server packages and configuration.         |
-+-----------------------------------------+----------+--------------------------------------------+
-| ``postgresql_install_syspaths``         | boolean  | Specifies whether to install PostgreSQL    |
-|                                         |          | Software Collection as the                 |
-|                                         |          | system-installed PostgreSQL using the      |
-|                                         |          | `syspaths package`_.                       |
-+-----------------------------------------+----------+--------------------------------------------+
-| ``postgresql_rhel_rhscl_repo``          | boolean  | Name of the Red Hat Software Collections   |
-|                                         |          | repository.                                |
-+-----------------------------------------+----------+--------------------------------------------+
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+|                Name                     |   Type   |                Description                 |                  Default                  |
++=========================================+==========+============================================+===========================================+
+| ``postgresql_conf_listen_addresses``    | string   | Comma-separeted list of IP addresses to    | ``"*"``                                   |
+|                                         |          | listen on.                                 |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | *NOTE*: Use ``"*"`` to specify to listen   |                                           |
+|                                         |          | on all addresses.                          |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+| ``postgresql_conf_password_encryption`` | string   | Algorithm to use when encrypting           | ``scram-sha-256``                         |
+|                                         |          | passwords.                                 |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | Available options are:                     |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | - ``scram-sha-256``                        |                                           |
+|                                         |          | - ``md5``                                  |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+| ``postgresql_conf_hba_local``           | dict     | Dictionary specifying authentication       | .. code-block:: yaml                      |
+|                                         |          | methods for local connections in           |                                           |
+|                                         |          | ``pg_hba.conf`` file.                      |     unix_socket: peer                     |
+|                                         |          |                                            |     ipv4: ident                           |
+|                                         |          | It must contain three keys controlling     |     ipv6: ident                           |
+|                                         |          | different types of local connections:      |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | - ``unix_socket``: local Unix socket       |                                           |
+|                                         |          |   connections                              |                                           |
+|                                         |          | - ``ipv4``: local IPv4 connections         |                                           |
+|                                         |          | - ``ipv6``: local IPv6 connections         |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | Each key's value must specify a valid      |                                           |
+|                                         |          | authentication method for its connection   |                                           |
+|                                         |          | type.                                      |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | For a list of possible authentication      |                                           |
+|                                         |          | methods, read the `documentation on        |                                           |
+|                                         |          | pg_hba.conf file`_.                        |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+| ``postgresql_conf_hba_custom``          | list     | List specifying custom records in the      | ``[]``                                    |
+|                                         |          | ``pg_hba.conf`` file.                      |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | Each entry is a dictionary of the form:    |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | .. code-block:: yaml                       |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          |     description: string                    |                                           |
+|                                         |          |     conn_type: string                      |                                           |
+|                                         |          |     database: string                       |                                           |
+|                                         |          |     user: string                           |                                           |
+|                                         |          |     address: string                        |                                           |
+|                                         |          |     method: string                         |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | where ``description`` represents record's  |                                           |
+|                                         |          | description, ``conn_type``, ``database``,  |                                           |
+|                                         |          | ``user``, ``address`` and ``method``       |                                           |
+|                                         |          | represent ``pg_hba.conf``'s connection     |                                           |
+|                                         |          | type, database, user, address and          |                                           |
+|                                         |          | authentication method parameters.          |                                           |
+|                                         |          |                                            |                                           |
+|                                         |          | For a detailed description of each         |                                           |
+|                                         |          | configuration parameter, read the          |                                           |
+|                                         |          | `documentation on pg_hba.conf file`_.      |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+| ``postgresql_local_enabled``            | boolean  | Specifies whether to install PostgreSQL    | ``true``                                  |
+|                                         |          | server packages and configuration.         |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+| ``postgresql_install_syspaths``         | boolean  | Specifies whether to install PostgreSQL    | ``true``                                  |
+|                                         |          | Software Collection as the                 |                                           |
+|                                         |          | system-installed PostgreSQL using the      |                                           |
+|                                         |          | `syspaths package`_.                       |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
+| ``postgresql_rhel_rhscl_repo``          | boolean  | Name of the Red Hat Software Collections   | ``rhel-server-rhscl-7-rpms``              |
+|                                         |          | repository.                                |                                           |
++-----------------------------------------+----------+--------------------------------------------+-------------------------------------------+
 
 .. _documentation on pg_hba.conf file:
   https://www.postgresql.org/docs/current/static/auth-pg-hba-conf.html
